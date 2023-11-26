@@ -14,6 +14,8 @@ Learned so much; mainly that there is still SO MUCH left to learn. And also, to 
 
 ## Link to Deployed Site:
 
+https://blooshroo.github.io/portfolio-challenge/
+
 ## Screenshot:
 
 ![screenshot of website](./images/screenshot.png)
