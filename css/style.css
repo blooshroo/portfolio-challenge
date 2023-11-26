@@ -32,6 +32,9 @@ h1 {
 }
 
 header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap-reverse;
   background-color: blueviolet;
   padding-bottom: .3rem;
   padding-top: .3rem;
@@ -39,22 +42,19 @@ header {
 }
 
 nav {
-  display: inline-block;
-  float: right;
   margin: .6rem .6rem;
 }
 
 ul {
   list-style-type: none;
   margin: 0;
-  padding: 0;
+  padding: 0 1rem;
 }
 
 li {
   display: inline;
   margin: .3rem;
   padding: .3rem;
-  /* text-decoration: underline solid 2px turquoise; */
 }
 
 nav a {
@@ -74,14 +74,14 @@ nav a {
   background-size: cover; 
 }
 
-img {
+.portrait {
   width: 14rem;
   display: flex;
   float: right;
   margin-right: 2.3rem;
   margin-top: 3.5rem;
   border: 0.3rem solid turquoise;
-  border-radius: 100%;
+  border-radius: 50%;
 }
 
 #catchphrase {
@@ -101,7 +101,7 @@ main {
 }
 
 .page-wrapper {
-  margin: 2.5rem;
+  margin: 1rem;
   padding: 2.5rem;
   display: grid;
   gap: 2.5rem;
@@ -115,14 +115,21 @@ main {
   padding-right: .6rem;
 }
 
+#about-text {
+  overflow:auto;
+  max-height:20rem;
+}
+
 #contact-details {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 #contact-details a {
   color: navy;
+  margin: 0 0.3rem;
 }
 
 /* Work Grid */
@@ -133,7 +140,7 @@ main {
   height: 40rem;
   width: 55rem;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 2.5fr 1fr 1fr;   
+  grid-template-rows: 2.5fr 1fr 1fr;
 }
 
 .workLabel {
@@ -142,9 +149,6 @@ main {
   position: absolute;
   bottom: .9rem;
   padding: .4rem .2rem .2rem;
-  /* padding-top: .4rem;
-  padding-left: .2rem;
-  padding-right: .2rem; */
   line-height: 1rem;
 }
 
@@ -155,6 +159,9 @@ main {
 .workContent {
   border: 2px solid turquoise;
   position: relative;
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-size: cover; 
 }
 
 .workContent a {
@@ -166,37 +173,22 @@ main {
 #portfolio1 {
   grid-column: span 2;
   background-image: url(../images/Climbing_Taghia.jpg);
-  background-position: center; 
-  background-repeat: no-repeat;
-  background-size: cover; 
 }
 
 #portfolio2 {
   background-image: url(../images/highheelhook.jpg);
-  background-position: center; 
-  background-repeat: no-repeat;
-  background-size: cover; 
 }
 
 #portfolio3 {
   background-image: url(../images/02-portfolio-2.jpg);
-  background-position: center; 
-  background-repeat: no-repeat;
-  background-size: cover; 
 }
 
 #portfolio4 {
   background-image: url(../images/02-portfolio-3.jpg);
-  background-position: center; 
-  background-repeat: no-repeat;
-  background-size: cover; 
 }
 
 #portfolio5 {
   background-image: url(../images/02-portfolio-4.jpg);
-  background-position: center; 
-  background-repeat: no-repeat;
-  background-size: cover; 
 }
 
 /* Responsiveness */
@@ -208,19 +200,11 @@ main {
     justify-content: center;
   }
 
-  .page-wrapper {
-    margin: 2.5rem;
-    margin-top: 1rem;
-    padding-left: 2.5rem;
-    grid-template-columns: fit-content(10rem) fit-content(55rem);
-
-  }
-
   #work-grid {
-    display: grid;
     gap: .6rem;
     height: 60rem;
-    width: 40rem;
+    width: 100%;
+    max-width: 40rem;
     grid-template-columns: 1fr;
     grid-template-rows: 2fr 1fr 1fr 1fr 1fr;   
   }
@@ -229,22 +213,24 @@ main {
     grid-column: span 1;
   }
 
-  .page-wrapper {
-    width: 40rem;
-    margin-left: 5rem;
-  }
-
 }
+/* -------------------------------- */
 
 @media (max-width: 850px) {
+  
   .page-wrapper {
-    margin: 2.5rem;
+    margin: 1rem;
     margin-top: 1rem;
     padding: 2.5rem;
     display: grid;
     gap: 2.5rem;
     grid-template-columns: fit-content(55rem);
     grid-template-rows: auto auto auto auto auto 5rem;
+  }
+
+  #work-grid {
+    max-width: 50rem;
+    max-height:60rem;
   }
 
   .page-section-title {
@@ -258,24 +244,68 @@ main {
   }
 
 }
+/* -------------------------------- */
 
 @media (max-width: 711px) {
  
   h1 {
     position: relative;
-    top: 4rem;
   }
 
-  img {
-    position: relative;
-    left: 14rem;
-    top: 3rem;
-    margin: 0;
-    float: none;
+  nav {
+    position: absolute;
+    right: 0;
+    top: .3rem;
   }
+
+  #work-grid {
+    width: auto;
+  }
+
+}
+/* -------------------------------- */
+
+@media (max-width: 615px) {
 
   header {
-    
+    align-content: flex-end;
+    height: 3rem;
   }
 
+  #catchphrase {
+    top: 20rem;
+    right: 0;
+  }
+
+  h1 {
+    display: flex;
+    padding-left: 1rem;
+    padding-right: 0.1rem;
+    font-size: 1.5rem;
+    top: .2rem;
+  }
+
+  .page-wrapper {
+    grid-template-rows: repeat(3, auto) 40rem auto 5rem;
+  }
+
+  #work-grid {
+    grid-template-rows: 12rem repeat(4, 6rem);
+  }
+
+}
+/* -------------------------------- */
+
+@media (max-width: 500px) {
+  
+  h1 {
+    top: 3.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  
+  li {
+    font-size: .8rem;
+  }
 }
